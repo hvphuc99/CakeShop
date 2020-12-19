@@ -23,6 +23,8 @@ namespace CakeShop
         public MainWindow()
         {
             InitializeComponent();
+            var db = new cakeShopEntities();
+            MessageBox.Show(db.cakes.Find(1).name);
         }
         private void GridBarraTitulo_MouseDown(object sender, MouseButtonEventArgs e)
         {
