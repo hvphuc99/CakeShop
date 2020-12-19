@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\visual-studio\local\CakeShop\CakeShop\obj\Debug\
+D:\HK1_nam4\Lập trình window\CakeShop\CakeShop\obj\Debug\
 CakeShop
 none
 false
 DEBUG;TRACE
-D:\visual-studio\local\CakeShop\CakeShop\App.xaml
-11151548125
+D:\HK1_nam4\Lập trình window\CakeShop\CakeShop\App.xaml
+31579027415
 
-6-1049819441
-15587572297
-MainWindow.xaml;
+112090005194
+151200765265
+MainWindow.xaml;UserController\ControlBar.xaml;UserController\SideBar.xaml;
 
 True
 

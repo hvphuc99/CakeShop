@@ -13,20 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CakeShop
+namespace CakeShop.UserController
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SideBar.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SideBar : UserControl
     {
-        public MainWindow()
+        public SideBar()
         {
             InitializeComponent();
         }
-        private void GridBarraTitulo_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
     }
+   
+    
 }

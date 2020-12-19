@@ -20,3 +20,8 @@ D:\HK1_nam4\Lập trình window\CakeShop\CakeShop\bin\Debug\MaterialDesignThemes
 D:\HK1_nam4\Lập trình window\CakeShop\CakeShop\bin\Debug\MaterialDesignThemes.Wpf.xml
 D:\HK1_nam4\Lập trình window\CakeShop\CakeShop\obj\Debug\App.baml
 D:\HK1_nam4\Lập trình window\CakeShop\CakeShop\obj\Debug\CakeShop.csproj.CopyComplete
+D:\HK1_nam4\Lập trình window\CakeShop\CakeShop\obj\Debug\UserController\ControlBar.g.cs
+D:\HK1_nam4\Lập trình window\CakeShop\CakeShop\obj\Debug\UserController\SideBar.g.cs
+D:\HK1_nam4\Lập trình window\CakeShop\CakeShop\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\HK1_nam4\Lập trình window\CakeShop\CakeShop\obj\Debug\UserController\ControlBar.baml
+D:\HK1_nam4\Lập trình window\CakeShop\CakeShop\obj\Debug\UserController\SideBar.baml
