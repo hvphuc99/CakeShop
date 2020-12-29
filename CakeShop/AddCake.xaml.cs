@@ -73,6 +73,7 @@ namespace CakeShop
                 cake.price = Int32.Parse(CakePrice.Text);
                 var typeID = (ComboBoxCakeType.SelectedItem as dynamic).id;
                 cake.cakeType = db.cakeTypes.Find(typeID);
+                cake.type_id = typeID;
 
                 string[] listString = photo.Split('\\');
                 string imageName = listString.Last();

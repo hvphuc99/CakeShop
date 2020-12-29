@@ -23,10 +23,34 @@ namespace CakeShop
     public partial class UpdateCake : Window
     {
         private string photo = null;
-        public UpdateCake()
+        private cake currentCakeDetail;
+        public UpdateCake(cake cakeDetail)
         {
             InitializeComponent();
-            fetchListCakeType();
+
+            currentCakeDetail = cakeDetail;
+            loadCakeDetail();
+        }
+
+        public void loadCakeDetail()
+        {
+            CakeName.Text = currentCakeDetail.name;
+            CakeDecription.Text = currentCakeDetail.description;
+            CakePrice.Text = currentCakeDetail.price.ToString();
+
+            photo = currentCakeDetail.photo;
+            var folder = AppDomain.CurrentDomain.BaseDirectory;
+            var photoPath = $"{folder}/Assets/{photo}";
+            var bitmap = new BitmapImage(new Uri(photoPath));
+
+            uploadPhotoStackPanel.Children.Remove(textUploadPhoto);
+
+            imageUploadPhoto.Source = bitmap;
+            imageUploadPhoto.Source = bitmap;
+            imageUploadPhoto.Width = 450;
+            imageUploadPhoto.Height = 200;
+
+            fetchListCakeType(currentCakeDetail.type_id);
             ComboBoxCakeType.DisplayMemberPath = "name";
         }
 
@@ -35,13 +59,17 @@ namespace CakeShop
             DragMove();
         }
 
-        public void fetchListCakeType()
+        public void fetchListCakeType(int typeID)
         {
             var db = new cakeShopEntities();
             var listCakeTypes = db.cakeTypes.ToList();
             foreach (var cakeType in listCakeTypes)
             {
                 ComboBoxCakeType.Items.Add(cakeType);
+                if (cakeType.id == typeID)
+                {
+                    ComboBoxCakeType.SelectedItem = cakeType;
+                }
             }
         }
 
@@ -67,27 +95,38 @@ namespace CakeShop
             if (CakeName.Text != "" && CakePrice.Text != "" && photo != "" && ComboBoxCakeType.SelectedItem != null)
             {
                 var db = new cakeShopEntities();
-                var cake = new cake();
+                var cake = db.cakes.Find(currentCakeDetail.id);
                 cake.name = CakeName.Text;
                 cake.description = CakeDecription.Text;
                 cake.price = Int32.Parse(CakePrice.Text);
                 var typeID = (ComboBoxCakeType.SelectedItem as dynamic).id;
                 cake.cakeType = db.cakeTypes.Find(typeID);
+                cake.type_id = typeID;
+
+                currentCakeDetail.name = CakeName.Text;
+                currentCakeDetail.description = CakeDecription.Text;
+                currentCakeDetail.price = Int32.Parse(CakePrice.Text);
+                currentCakeDetail.cakeType = db.cakeTypes.Find(typeID);
+                currentCakeDetail.type_id = typeID;
 
                 string[] listString = photo.Split('\\');
-                string imageName = listString.Last();
+                if (listString[0] != photo)
+                {
+                    string imageName = listString.Last();
 
-                var folder = AppDomain.CurrentDomain.BaseDirectory;
-                Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-                var newImageName = unixTimestamp.ToString() + "_" + imageName;
-                var path = System.IO.Path.Combine(folder, "Assets", newImageName);
-                File.Copy(photo, path, true);
+                    var folder = AppDomain.CurrentDomain.BaseDirectory;
+                    Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                    var newImageName = unixTimestamp.ToString() + "_" + imageName;
+                    var path = System.IO.Path.Combine(folder, "Assets", newImageName);
+                    File.Copy(photo, path, true);
 
-                cake.photo = newImageName;
+                    cake.photo = newImageName;
 
-                db.cakes.Add(cake);
+                    currentCakeDetail.photo = newImageName;
+                }
+
                 db.SaveChanges();
-                MessageBox.Show("Add cake successful !", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Update cake successful !", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
