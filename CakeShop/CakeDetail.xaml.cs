@@ -54,7 +54,7 @@ namespace CakeShop
             var updateCake = new UpdateCake();
             this.Hide();
             updateCake.ShowDialog();
-            this.Show();
+            this.ShowDialog();
         }
     }
 }
