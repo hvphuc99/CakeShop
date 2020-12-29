@@ -158,7 +158,7 @@
         <Grid Name="Gridsidebar"
               Grid.Row="1">
 
-            <uc:SideBar></uc:SideBar>
+            <!--<uc:SideBar></uc:SideBar>-->
         </Grid>
         <Grid x:Name="GridBarraTitulo"
               Grid.ColumnSpan="2"

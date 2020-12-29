@@ -82,7 +82,9 @@
                                 
                                 Margin="0,0,25,0"
                                 Style="{StaticResource MaterialDesignFloatingActionButton}"
-                                ToolTip="MaterialDesignFloatingActionButton">
+                                ToolTip="MaterialDesignFloatingActionButton"
+                                x:Name="UpdateCakeButton"
+                                Click="UpdateCakeButton_Click">
                             <materialDesign:PackIcon Kind="Update"
                                                      Height="24"
                                                      Width="24" />

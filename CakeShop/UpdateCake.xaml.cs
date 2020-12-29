@@ -20,10 +20,10 @@ namespace CakeShop
     /// <summary>
     /// Interaction logic for AddCake.xaml
     /// </summary>
-    public partial class AddCake : Window
+    public partial class UpdateCake : Window
     {
         private string photo = null;
-        public AddCake()
+        public UpdateCake()
         {
             InitializeComponent();
             fetchListCakeType();
@@ -62,7 +62,7 @@ namespace CakeShop
             }
         }
 
-        private void AddCakeButton_Click(object sender, RoutedEventArgs e)
+        private void UpdateCakeButton_Click(object sender, RoutedEventArgs e)
         {
             if (CakeName.Text != "" && CakePrice.Text != "" && photo != "" && ComboBoxCakeType.SelectedItem != null)
             {
@@ -120,9 +120,9 @@ namespace CakeShop
             }
         }
 
-        private void CancelAddCakeButton_Click(object sender, RoutedEventArgs e)
+        private void CancelUpdateCakeButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+           this.Close();
         }
     }
 }

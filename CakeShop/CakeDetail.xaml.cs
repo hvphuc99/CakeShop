@@ -49,12 +49,12 @@ namespace CakeShop
             this.Close();
         }
 
-        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        private void UpdateCakeButton_Click(object sender, RoutedEventArgs e)
         {
-            Order order = new Order();
+            var updateCake = new UpdateCake();
             this.Hide();
-            order.ShowDialog();
-            this.ShowDialog();
+            updateCake.ShowDialog();
+            this.Show();
         }
     }
 }

@@ -89,6 +89,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UpdateCake.xaml.cs">
+      <DependentUpon>UpdateCake.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddCake.xaml.cs">
       <DependentUpon>AddCake.xaml</DependentUpon>
     </Compile>
@@ -133,6 +136,10 @@
     <Compile Include="UserController\SideBar.xaml.cs">
       <DependentUpon>SideBar.xaml</DependentUpon>
     </Compile>
+    <Page Include="UpdateCake.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AddCake.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

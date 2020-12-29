@@ -40,7 +40,7 @@
 
         <StackPanel Grid.Row="1" Margin="0,40,0,0" >
 
-            <Button Name="btnHome"
+            <Button Name="btnCakes"
                     Margin="10"
                     Background="#FF5DB1AA"
                     BorderBrush="#FF5DB1AA"
@@ -59,7 +59,8 @@
                     Background="#FF5DB1AA"
                     BorderBrush="#FF5DB1AA"
                     Height="50"
-                    Name="btnFavorite"
+                    Name="btnAddCake"
+                    Click="btnAddCake_Click"
                     >
 
                 <Grid Width="150">
