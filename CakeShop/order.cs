@@ -26,7 +26,6 @@ namespace CakeShop
         public string address { get; set; }
         public Nullable<System.DateTime> payDate { get; set; }
         public Nullable<int> totalPrice { get; set; }
-    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<orderDetail> orderDetails { get; set; }
     }

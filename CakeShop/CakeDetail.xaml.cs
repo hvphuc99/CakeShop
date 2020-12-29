@@ -48,5 +48,13 @@ namespace CakeShop
         {
             this.Close();
         }
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Order order = new Order();
+            this.Hide();
+            order.ShowDialog();
+            this.ShowDialog();
+        }
     }
 }

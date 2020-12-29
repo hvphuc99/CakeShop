@@ -76,8 +76,10 @@
                                                                                             Margin="0,10,0,0"
                                                                                             FontFamily="Brush Script MT"
                                                                                             FontSize="25">$100,00</TextBlock></TextBlock>
-                        <Button Grid.Column="1"
+                        <Button Name="btnEdit" Grid.Column="1"
+                                Click="BtnEdit_Click"
                                 Grid.Row="1"
+                                
                                 Margin="0,0,25,0"
                                 Style="{StaticResource MaterialDesignFloatingActionButton}"
                                 ToolTip="MaterialDesignFloatingActionButton">

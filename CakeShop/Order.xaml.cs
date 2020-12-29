@@ -188,6 +188,21 @@ namespace CakeShop
             }
             return subtotal;
         }
+
+        private void BtnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            int id = (int)button.Tag;
+            purchase.Remove(findById(purchase,id));
+            dgvCart.ItemsSource = null;
+            dgvCart.ItemsSource = purchase;
+            tbxSubtotal.Text = subtotal()?.ToString("c", culture);
+        }
+
+        private void BtnCloseOrder_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
         //private void DgvCakes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         //{
         //    DataGrid gd = (DataGrid)sender;

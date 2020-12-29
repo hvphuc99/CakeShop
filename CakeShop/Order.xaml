@@ -168,7 +168,7 @@
                                         <DataGridTemplateColumn Header="Remove">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Button >
+                                                    <Button Name="btnRemove" Tag="{Binding Id}" Click="BtnRemove_Click">
                                                         <materialDesign:PackIcon Kind="Close"
                                                                                  Foreground="#FFA04545"
                                                                                  Height="24"
@@ -215,8 +215,24 @@
                         </Border>
                     </Grid>
                 </Grid>
-                <TextBlock Grid.Row="2"
-                           Background="Bisque"></TextBlock>
+                <Grid Grid.Row="2"
+                           Background="Bisque">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Style="{StaticResource MaterialDesignRaisedLightButton}"
+                            Width="100"
+                            ToolTip="Resource name: MaterialDesignRaisedLightButton">
+                        History
+                    </Button>
+                    <Button Name="btnCloseOrder" Grid.Column="1" Style="{StaticResource MaterialDesignRaisedLightButton}"
+                            Width="100"
+                            Click="BtnCloseOrder_Click"
+                            ToolTip="Resource name: MaterialDesignRaisedLightButton">
+                        Back
+                    </Button>
+                </Grid>
             </Grid>
         </GroupBox>
     </Grid>
