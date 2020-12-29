@@ -24,7 +24,7 @@ namespace CakeShop
             sidebar = new SideBar();
             Gridsidebar.Children.Add(sidebar);
             sidebar.AddCakeScreen += showAddCakeScreen;
-
+            sidebar.AddOrderScreen += showAddOrderScreen;
             loadCakes(0,1);
             loadCakeTypes();
         }
@@ -36,7 +36,13 @@ namespace CakeShop
             addCakeScreen.ShowDialog();
             this.Show();
         }
-
+        public void showAddOrderScreen()
+        {
+            Order order = new Order();
+            this.Hide();
+            order.ShowDialog();
+            this.Show();
+        }
 
         void loadCakes(int index,int option)
         {

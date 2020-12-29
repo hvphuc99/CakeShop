@@ -39,7 +39,7 @@ namespace CakeShop
         }
         private List<CakeDto> convertCulteralInfoPrice(List<cake> cakes)
         {
-            
+
             List<CakeDto> Dtos = new List<CakeDto>();
 
             foreach (cake cake in cakes)
@@ -54,7 +54,7 @@ namespace CakeShop
         {
             IntegerUpDown integerUpDown = (IntegerUpDown)sender;
             if (integerUpDown.Tag != null)
-            { 
+            {
                 int index = (int)integerUpDown.Tag;
                 updateQuantity(index, (int)integerUpDown.Value);
             }
@@ -79,11 +79,11 @@ namespace CakeShop
             {
                 if (cakeDto.Id == (int)button.Tag)
                 {
-                    if(addToCart((int)button.Tag))
+                    if (addToCart((int)button.Tag))
                     {
                         dgvCart.ItemsSource = null;
                         dgvCart.ItemsSource = purchase;
-                        tbxSubtotal.Text = subtotal()?.ToString("c",culture);
+                        tbxSubtotal.Text = subtotal()?.ToString("c", culture);
                     }
                     else
                     {
@@ -100,7 +100,7 @@ namespace CakeShop
                 if (Dto.Id == id)
                 {
                     Dto.Quantity = Dto.Quantity + findQuantityById(id);
-                    if(Dto.Quantity > findById(cakeDtos,id).Quantity)
+                    if (Dto.Quantity > findById(cakeDtos, id).Quantity)
                     {
                         return 0;
                     }
@@ -141,15 +141,15 @@ namespace CakeShop
         {
             if (findById(purchase, id) == null)
             {
-                if(findById(cart,id).Quantity>findById(cakeDtos,id).Quantity)
+                if (findById(cart, id).Quantity > findById(cakeDtos, id).Quantity)
                 {
                     return false;
                 }
                 CakeDto dto = new CakeDto(findById(cart, id));
-                if(dto.Quantity != 1)
+                if (dto.Quantity != 1)
                 {
                     int? price = findCakeById(id).price;
-                    
+
                     dto.Price = (price * dto.Quantity)?.ToString("c", culture);
                 }
                 purchase.Add(dto);
@@ -179,14 +179,49 @@ namespace CakeShop
         private int? subtotal()
         {
             int? subtotal = 0;
-            if(purchase.Count!=0)
+            if (purchase.Count != 0)
             {
-                foreach(CakeDto cakeDto in purchase)
+                foreach (CakeDto cakeDto in purchase)
                 {
                     subtotal = subtotal + (findCakeById(cakeDto.Id).price * cakeDto.Quantity);
                 }
             }
             return subtotal;
+        }
+
+        private void BtnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            int id = (int)button.Tag;
+            purchase.Remove(findById(purchase, id));
+            dgvCart.ItemsSource = null;
+            dgvCart.ItemsSource = purchase;
+            tbxSubtotal.Text = subtotal()?.ToString("c", culture);
+        }
+
+        private void BtnCloseOrder_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BtnAddOrder_Click(object sender, RoutedEventArgs e)
+        {
+            //screen info
+            if (purchase.Count == 0) return;
+           
+            CultureInfo culture = new CultureInfo("en-US");
+            string price = subtotal()?.ToString("c",culture); 
+            Confirm confirm = new Confirm(purchase,price);
+            this.Hide();
+            confirm.ShowDialog();
+            if (purchase.Count == 0)
+                refeshCart();
+            this.ShowDialog();
+        }
+        private void refeshCart()
+        {
+            dgvCart.ItemsSource = null;
+            tbxSubtotal.Text = "";
         }
         //private void DgvCakes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         //{

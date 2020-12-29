@@ -23,6 +23,8 @@ namespace CakeShop.UserController
     {
         public delegate void AddCakeScreenDelegate();
         public event AddCakeScreenDelegate AddCakeScreen;
+        public delegate void AddOrderScreenDelegate();
+        public event AddCakeScreenDelegate AddOrderScreen;
         public SideBar()
         {
             InitializeComponent();
@@ -30,6 +32,11 @@ namespace CakeShop.UserController
         private void btnAddCake_Click(object sender, RoutedEventArgs e)
         {
             AddCakeScreen();
+        }
+
+        private void BtnOrderScreen_Click(object sender, RoutedEventArgs e)
+        {
+            AddOrderScreen();
         }
     }
    

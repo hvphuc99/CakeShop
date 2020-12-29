@@ -95,6 +95,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Confirm.xaml.cs">
+      <DependentUpon>Confirm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Statistical.xaml.cs">
       <DependentUpon>Statistical.xaml</DependentUpon>
     </Compile>
@@ -145,6 +148,10 @@
     <Compile Include="UserController\SideBar.xaml.cs">
       <DependentUpon>SideBar.xaml</DependentUpon>
     </Compile>
+    <Page Include="Confirm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Statistical.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
