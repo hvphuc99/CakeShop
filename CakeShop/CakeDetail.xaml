@@ -1,0 +1,125 @@
+﻿<Window x:Class="CakeShop.CakeDetail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:CakeShop"
+        mc:Ignorable="d"
+        Title="CakeDetail"
+        Height="500"
+        Width="700"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/wallwood.jpg"
+                        Opacity="0.60"></ImageBrush>
+        </Grid.Background>
+        <GroupBox Header="Cake Detail">
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="190" />
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Border BorderBrush="#FF514F4D"
+                            BorderThickness="1"
+                            CornerRadius="20"
+                            Width="340"
+                            Height="250">
+                        <Border.Background>
+                            <ImageBrush x:Name="cakeImage"
+                                        ImageSource="/Assets/croissant.jpg"></ImageBrush>
+                        </Border.Background>
+                    </Border>
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Foreground="#FF514F4D"
+                                   FontSize="20"
+                                   Margin="25,0,0,0"
+                                   VerticalAlignment="Center">Cake name<LineBreak /><TextBlock Name="cakeName"
+                                                                                               Foreground="Black"
+                                                                                               Margin="0,10,0,0"
+                                                                                               FontFamily="Brush Script MT"
+                                                                                               FontSize="25">Croissant</TextBlock></TextBlock>
+                        <TextBlock Foreground="#FF514F4D"
+                                   FontSize="20"
+                                   Margin="25,0,0,0"
+                                   Grid.Column="1"
+                                   VerticalAlignment="Center">Cake type<LineBreak /><TextBlock Name="cakeType"
+                                                                                               Foreground="Black"
+                                                                                               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                                                                                               Margin="0,10,0,0"
+                                                                                               TextWrapping="WrapWithOverflow"
+                                                                                               FontFamily="Brush Script MT"
+                                                                                               FontSize="25">Fruit</TextBlock></TextBlock>
+                        <TextBlock Foreground="#FF514F4D"
+                                   FontSize="20"
+                                   Margin="25,0,0,0"
+                                   Grid.Row="1"
+                                   VerticalAlignment="Center">Price <LineBreak /><TextBlock Name="cakePrice"
+                                                                                            Foreground="Black"
+                                                                                            Margin="0,10,0,0"
+                                                                                            FontFamily="Brush Script MT"
+                                                                                            FontSize="25">$100,00</TextBlock></TextBlock>
+                        <Button Grid.Column="1"
+                                Grid.Row="1"
+                                Margin="0,0,25,0"
+                                Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                ToolTip="MaterialDesignFloatingActionButton">
+                            <materialDesign:PackIcon Kind="Update"
+                                                     Height="24"
+                                                     Width="24" />
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Border Margin="0,10,0,0"
+                            BorderBrush="Black"
+                            BorderThickness="1"
+                            CornerRadius="20"
+                            Width="670">
+                        <TextBlock Margin="4"
+                                   FontStyle="Italic"
+                                   FontFamily="Comic Sans MS"
+                                   Name="cakeDescription"
+                                   FontSize="15"
+                                   TextWrapping="WrapWithOverflow"
+                                   Text="Tiramisu là một trong những loại bánh ngọt hot nhất hiện nay và là một loại bánh ngọt tráng miệng vị cà phê rất nổi tiếng của nước Ý được du nhập vào Việt Nam và rất nhanh đã chinh phục được các tín đồ yêu đồ ngọt. Nguyên liệu làm bánh bao gồm các lớp bánh quy Savoiardi, nhúng cà phê xen kẽ với hỗn hợp trứng, đường, phô mai mascarpone đánh bông, thêm một ít bột cacao. Công thức bánh này được biến tấu thành nhiều món bánh và món tráng miệng khác nhau.">
+
+                        </TextBlock>
+                    </Border>
+                    <Button Grid.Row="1"
+                            Style="{StaticResource MaterialDesignRaisedLightButton}"
+                            Width="100"
+                            Name="closeDetail"
+                            Margin="0,3,0,0"
+                            ToolTip="Resource name: MaterialDesignRaisedLightButton"
+                            Click="CloseDetail_Click">
+                        BACK
+                    </Button>
+                </Grid>
+
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</Window>

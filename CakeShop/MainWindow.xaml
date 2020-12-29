@@ -23,15 +23,143 @@
             <RowDefinition Height="30" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <Grid Grid.Column="1"
+              Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Grid.Background>
+                <ImageBrush ImageSource="/Assets/wallWood.jpg"
+                            Opacity="0.60" ></ImageBrush>
+            </Grid.Background>
+            <ComboBox Name="cbxtypeCakes"
+                      Width="150"
+                      FontFamily="Segoe Print"
+                      ItemsSource="{Binding cakeTypes}"
+                      DisplayMemberPath="name"
+                     
+                      SelectedValue="{Binding id}"
+                      HorizontalAlignment="Left"
+                      Margin="40,0,0,0"
+                      materialDesign:HintAssist.Hint="Type of cake"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                      SelectionChanged="CbxtypeCakes_SelectionChanged">
+             
+            </ComboBox>
+            <ScrollViewer Grid.Row="1"
+                          ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                <StackPanel  Margin="20 0">
+                    <ItemsControl x:Name="ListCake"
+                                  ItemsSource="{Binding cakeDtos}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Margin="10"
+                                        Width="210"
+                                        Height="179">
+                                    <StackPanel>
+                                        <Border Width="210"
+                                                Height="130">
+                                            <Border.Effect>
+                                                <DropShadowEffect BlurRadius="5"
+                                                                  Opacity=".5"
+                                                                  ShadowDepth="4" />
+                                            </Border.Effect>
+                                            <!--Nút xem chi tiết-->
+                                            <Button Width="210"
+                                                    Height="140"
+                                                    Name="btnxemchitiet"
+                                                    Padding="0"
+                                                    Tag="{Binding Id}"
+                                                    BorderThickness="0"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch"
+                                                    Click="Btnxemchitiet_Click"
+                                                    BorderBrush="{x:Null}"
+                                                    Background="{x:Null}">
+                                                <!--binding image-->
+                                                <Image  Source="{Binding Photo}"
+                                                        Width="200"
+                                                        Height="130"
+                                                        Stretch="Fill">
+                                                    <Image.Clip>
+                                                        <RectangleGeometry RadiusX="15"
+                                                                           RadiusY="15"
+                                                                           Rect="0,0,200,126"></RectangleGeometry>
+                                                    </Image.Clip>
+                                                </Image>
+
+                                                <!--<StackPanel Orientation="Horizontal"
+                                                            HorizontalAlignment="Right"
+                                                            VerticalAlignment="Bottom">
+                                                   
+
+                                                </StackPanel>-->
+
+                                            </Button>
+                                        </Border>
+                                        <!--binding name-->
+                                        <Border  Margin="4,10,4,0"
+                                                 BorderBrush="#FF514F4D"
+                                                 BorderThickness="1"
+                                                 CornerRadius="10">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="0.5*" />
+                                                    <ColumnDefinition Width="0.5*" />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock  Text="{Binding Name}"
+                                                            Foreground="#FF514F4D"
+                                                            TextAlignment="Center"
+                                                            FontFamily="Brush Script MT"
+                                                            FontSize="25" />
+                                                <TextBlock Grid.Column="1"
+                                                           Text="{Binding Price}"
+                                                           Foreground="#FF514F4D"
+                                                           TextAlignment="Center"
+                                                           FontSize="20" />
+                                            </Grid>
+                                        </Border>
+
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer>
+            <TextBlock Grid.Row="2" HorizontalAlignment="Right" Margin="0,0,50,0">
+                <Button Margin="0,0,10,5"                      
+                        Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                        ToolTip="MaterialDesignFloatingActionMiniLightButton"
+                        Click="ButtonLeft_Click">
+                <materialDesign:PackIcon Kind="ChevronLeft"
+                                         Height="20"
+                                         Width="20" />
+            </Button>
+                <Button Margin="10,0,0,5"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                        ToolTip="MaterialDesignFloatingActionMiniLightButton"
+                        Click="ButtonRight_Click">
+                <materialDesign:PackIcon Kind="ChevronRight"
+                                         Height="20"
+                                         Width="20" />
+            </Button>
+            </TextBlock>
+        </Grid>
+
 
         <Grid Name="Gridsidebar"
               Grid.Row="1">
 
             <uc:SideBar></uc:SideBar>
         </Grid>
-
-
-
         <Grid x:Name="GridBarraTitulo"
               Grid.ColumnSpan="2"
               Background="#FF8522BD"

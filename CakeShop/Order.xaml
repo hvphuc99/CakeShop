@@ -1,0 +1,223 @@
+﻿<Window xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        x:Class="CakeShop.Order"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:wpfToolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=WPFToolkit.Extended"
+        xmlns:local="clr-namespace:CakeShop"
+        mc:Ignorable="d"
+        Title="Order"
+        Height="600"
+        Width="1050"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
+    <Grid>
+        <GroupBox  Header="Order">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.8*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Margin="0 8 0 0"                      
+                              Name="dgvCakes"
+                              ItemsSource="{Binding cakeDtos}"
+                              CanUserSortColumns="True"
+                              CanUserAddRows="False"
+                              SelectionUnit="FullRow"
+                              AutoGenerateColumns="False"
+                              materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+                              materialDesign:DataGridAssist.ColumnHeaderPadding="8"
+                              
+                              >
+                        
+                        
+                        <DataGrid.Columns >
+                            <DataGridTextColumn IsReadOnly="True"
+                                                Binding="{Binding Id}"
+                                                Header="ID" />
+                            <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
+                            <DataGridTextColumn IsReadOnly="True"
+                                                Binding="{Binding Name}"
+                                                Header="Name"
+                                                Width="150"
+                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                            <!-- set a max length to get an indicator in the editor -->
+                            <DataGridTextColumn IsReadOnly="True"
+                                                Binding="{Binding Quantity}"
+                                                Header="Quantity"
+                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                            <DataGridTextColumn IsReadOnly="True"
+                                                Binding="{Binding Price}"
+                                                Header="Price"
+                                                Width="150"
+                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
+
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="{x:Type DataGridColumnHeader}"
+                                           BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+                                        <Setter Property="HorizontalAlignment"
+                                                Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="HorizontalAlignment"
+                                                Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTemplateColumn Header="Buy">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <xctk:IntegerUpDown Tag="{Binding Id}" Value="1"   DefaultValue="1"
+                                                            Minimum="1"
+                                                              ValueChanged="IntegerUpDown_ValueChanged" />
+                                    </DataTemplate>
+
+                                </DataGridTemplateColumn.CellTemplate>
+
+                                <DataGridTemplateColumn.HeaderStyle>
+                                    <Style TargetType="{x:Type DataGridColumnHeader}"
+                                           BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+                                        <Setter Property="HorizontalAlignment"
+                                                Value="Center" />
+                                    </Style>
+                                </DataGridTemplateColumn.HeaderStyle>
+
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Add to cart">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Tag="{Binding Id}" Click="Button_Click">
+                                            <materialDesign:PackIcon Kind="Cart"
+                                                                     Height="24"
+                                                                     Width="24" />
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.HeaderStyle>
+                                    <Style TargetType="{x:Type DataGridColumnHeader}"
+                                           BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+                                        <Setter Property="HorizontalAlignment"
+                                                Value="Center" />
+                                    </Style>
+                                </DataGridTemplateColumn.HeaderStyle>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="5"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border Margin="10,10,10,0"
+                                BorderBrush="Orange"
+                                BorderThickness="1"
+                                CornerRadius="20">
+                            <Grid>
+                                <Border CornerRadius="20"
+                                        Background="Gray"
+                                        VerticalAlignment="Top"
+                                        Height="50"
+                                        BorderBrush="Black"
+                                        BorderThickness="0,0,0,1">
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="245" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock  HorizontalAlignment="Right"
+                                                    VerticalAlignment="Center"
+                                                    Margin="0,0,4,0"
+                                                    Foreground="WhiteSmoke"><materialDesign:PackIcon Kind="Cart"
+                                                                                                     Height="24"
+                                                                                                     Width="24" />
+                                        </TextBlock>
+                                        <TextBlock FontSize="20"
+                                                   HorizontalAlignment="Left"
+                                                   Margin="4,10,0,0"
+                                                   Grid.Column="1"
+                                                   Foreground="WhiteSmoke"
+                                                   FontStyle="Italic">Your Cart</TextBlock>
+                                    </Grid>
+                                </Border>
+                                <DataGrid Width="450"
+                                          Height="290"
+                                          Margin="0,0,0,70"
+                                          CanUserSortColumns="True"
+                                          CanUserAddRows="False"
+                                          SelectionUnit="FullRow"
+                                          AutoGenerateColumns="False"
+                                          x:Name="dgvCart"
+                                          ItemsSource="{Binding purchase}">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding Id}" Header="id"></DataGridTextColumn>
+                                        <DataGridTextColumn IsReadOnly="True" Width="130"  Binding="{Binding Name}" Header="Name"></DataGridTextColumn>
+                                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding Quantity}" Header="Quantity"></DataGridTextColumn>
+                                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding Price}" Header="Price"></DataGridTextColumn>
+                                        <DataGridTemplateColumn Header="Remove">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button >
+                                                        <materialDesign:PackIcon Kind="Close"
+                                                                                 Foreground="#FFA04545"
+                                                                                 Height="24"
+                                                                                 Width="24" />
+                                                    </Button>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                            <DataGridTemplateColumn.HeaderStyle>
+                                                <Style TargetType="{x:Type DataGridColumnHeader}"
+                                                       BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+                                                    <Setter Property="HorizontalAlignment"
+                                                            Value="Center" />
+                                                </Style>
+                                            </DataGridTemplateColumn.HeaderStyle>
+                                        </DataGridTemplateColumn>
+
+                                    </DataGrid.Columns>
+                                    
+                                </DataGrid>
+                                <Grid Margin="0,340,0,0"
+                                      Background="#FFBCBCBC"
+                                      Height="90" Width="435">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Foreground="#FF514F4D"
+                                               FontSize="25"
+                                               Margin="60,0,0,0"
+                                               VerticalAlignment="Center">Subtotal<LineBreak /><TextBlock Name="tbxSubtotal"
+                                                                                                           Foreground="Black"
+                                                                                                           Margin="0,10,0,0"
+                                                                                                           FontFamily="Brush Script MT"
+                                                                                                           FontSize="25">$0</TextBlock></TextBlock>
+                                    <Button Grid.Column="1"
+                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                            Width="150"
+                                            ToolTip="Resource name: MaterialDesignRaisedLightButton">Create new order</Button>
+                                </Grid>
+                            </Grid>
+                            <!--giở hàng-->
+                            
+                        </Border>
+                    </Grid>
+                </Grid>
+                <TextBlock Grid.Row="2"
+                           Background="Bisque"></TextBlock>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

@@ -68,6 +68,21 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -76,6 +91,9 @@
     </ApplicationDefinition>
     <Compile Include="cake.cs">
       <DependentUpon>CakeShopDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CakeDetail.xaml.cs">
+      <DependentUpon>CakeDetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="CakeShopDB.Context.cs">
       <AutoGen>True</AutoGen>
@@ -95,8 +113,13 @@
     <Compile Include="cakeType.cs">
       <DependentUpon>CakeShopDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="DTO\CakeDto.cs" />
+    <Compile Include="DTO\page.cs" />
     <Compile Include="order.cs">
       <DependentUpon>CakeShopDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order.xaml.cs">
+      <DependentUpon>Order.xaml</DependentUpon>
     </Compile>
     <Compile Include="orderDetail.cs">
       <DependentUpon>CakeShopDB.tt</DependentUpon>
@@ -107,6 +130,10 @@
     <Compile Include="UserController\SideBar.xaml.cs">
       <DependentUpon>SideBar.xaml</DependentUpon>
     </Compile>
+    <Page Include="CakeDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -119,6 +146,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Order.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserController\ControlBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -166,6 +197,32 @@
     <Resource Include="Assets\0.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\banhGio.jpg" />
+    <Resource Include="Assets\banhPia.jpg" />
+    <Resource Include="Assets\croissant.jpg" />
+    <Resource Include="Assets\macaron.jpg" />
+    <Resource Include="Assets\opera.jpg" />
+    <Resource Include="Assets\redVelet.jpg" />
+    <Resource Include="Assets\bizcochoDeAceite.jpg" />
+    <Resource Include="Assets\castagnaccio.jpg" />
+    <Resource Include="Assets\chiffonCake.jpg" />
+    <Resource Include="Assets\banhDaLon.jpg" />
+    <Resource Include="Assets\biblingka.jpg" />
+    <Resource Include="Assets\karpatka.jpg" />
+    <Resource Include="Assets\somloiGaluska.jpg" />
+    <Resource Include="Assets\kutsinta.jpg" />
+    <Resource Include="Assets\brandy.jpg" />
+    <Resource Include="Assets\butter.jpg" />
+    <Resource Include="Assets\grapeCake.jpg" />
+    <Resource Include="Assets\jewelledCake.jpg" />
+    <Resource Include="Assets\lightCake.jpg" />
+    <Resource Include="Assets\pastryCake.jpg" />
+    <Resource Include="Assets\VanillaFruits.jpg" />
+    <Resource Include="Assets\vizagfood.jpg" />
+    <Resource Include="Assets\Obsttorte.jpg" />
+    <Resource Include="Assets\flan.jpg" />
+    <Resource Include="Assets\rasberry.jpg" />
+    <Resource Include="Assets\wallWood.jpg" />
     <Content Include="CakeShopDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CakeShopDB.edmx</DependentUpon>

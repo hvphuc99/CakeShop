@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="cakeShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="cakeShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="cakes">
           <Key>
             <PropertyRef Name="id" />
@@ -15,6 +15,7 @@
           <Property Name="description" Type="nvarchar(max)" />
           <Property Name="price" Type="int" />
           <Property Name="type_id" Type="int" />
+          <Property Name="quantity" Type="int" />
         </EntityType>
         <EntityType Name="cakeTypes">
           <Key>
@@ -98,8 +99,7 @@
             <End Role="orderDetails" EntitySet="orderDetails" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="cakeShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -115,6 +115,7 @@
           <Property Name="type_id" Type="Int32" />
           <NavigationProperty Name="orderDetails" Relationship="Self.FK_cake" FromRole="cakes" ToRole="orderDetails" />
           <NavigationProperty Name="cakeType" Relationship="Self.FK_cake_typeCake" FromRole="cakes" ToRole="cakeTypes" />
+          <Property Name="quantity" Type="Int32" />
         </EntityType>
         <EntityType Name="cakeType">
           <Key>
@@ -211,6 +212,7 @@
           <EntitySetMapping Name="cakes">
             <EntityTypeMapping TypeName="cakeShopModel.cake">
               <MappingFragment StoreEntitySet="cakes">
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="photo" ColumnName="photo" />
