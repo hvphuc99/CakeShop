@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using CakeShop.UserController;
+using System;
 
 namespace CakeShop
 {
@@ -119,7 +120,9 @@ namespace CakeShop
             List<CakeDto> cakeDtos = new List<CakeDto>();
             
             foreach (cake cake in cakes)
-            {              
+            {
+                var folder = AppDomain.CurrentDomain.BaseDirectory;
+                cake.photo = $"{folder}/Assets/{cake.photo}";
                 CakeDto cakeDto = new CakeDto(cake.id,cake.name,cake.photo,cake.description, cake.price?.ToString("c", culture),cake.type_id);
                 cakeDtos.Add(cakeDto);
             }
@@ -150,6 +153,7 @@ namespace CakeShop
                 CakeDetail detail = new CakeDetail(targetcake);
                 this.Hide();
                 detail.ShowDialog();
+                loadCakes(0,1);
                 this.Show();
             }
         }

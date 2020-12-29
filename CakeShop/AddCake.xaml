@@ -126,7 +126,7 @@
                 <Button
                     x:Name="CakePhoto"
                     Click="CakePhoto_Click"
-                    Background="White"
+                    Background="Transparent"
                     BorderBrush="#FF5DB1AA"
                     Padding="0, 0, 0, 0"
                     Margin="0, 50, 0, 0"

@@ -21,20 +21,21 @@ namespace CakeShop
     /// </summary>
     public partial class CakeDetail : Window
     {
+        private cake currentCakeDetail;
         public CakeDetail(cake cakeDetail)
         {
             InitializeComponent();
             loadDetail(cakeDetail);
+            currentCakeDetail = cakeDetail;
         }
         private void loadDetail(cake cakeDetail)
         {
             
             CultureInfo culture = new CultureInfo("en-US");
-            BitmapImage bitmapImage = new BitmapImage();
-            bitmapImage.BeginInit();
-            bitmapImage.UriSource = new Uri($"pack://application:,,,/CakeShop;component{cakeDetail.photo}");
-            bitmapImage.EndInit();
-            cakeImage.ImageSource = bitmapImage;
+            var folder = AppDomain.CurrentDomain.BaseDirectory;
+            var photoPath = $"{folder}/Assets/{cakeDetail.photo}";
+            var bitmap = new BitmapImage(new Uri(photoPath));
+            cakeImage.ImageSource = bitmap;
             cakeName.Text = cakeDetail.name;
             using (var db = new cakeShopEntities())
             {
@@ -51,10 +52,11 @@ namespace CakeShop
 
         private void UpdateCakeButton_Click(object sender, RoutedEventArgs e)
         {
-            var updateCake = new UpdateCake();
+            var updateCake = new UpdateCake(currentCakeDetail);
             this.Hide();
             updateCake.ShowDialog();
-            this.Show();
+            loadDetail(currentCakeDetail);  
+            this.ShowDialog();
         }
     }
 }
