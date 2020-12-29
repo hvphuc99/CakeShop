@@ -112,6 +112,7 @@
         <Grid Grid.Row="2">
             <Button
                 x:Name="BackHomeButton"
+                Click="BackHomeButton_Click"
                 Content="Back"
                 Background="#FF5DB1AA"
                 Foreground="White"

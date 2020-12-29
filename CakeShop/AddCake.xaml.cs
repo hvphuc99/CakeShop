@@ -64,7 +64,7 @@ namespace CakeShop
 
         private void AddCakeButton_Click(object sender, RoutedEventArgs e)
         {
-            if (CakeName.Text != "" && CakePrice.Text != "" && photo != "" && ComboBoxCakeType.SelectedItem != null)
+            if (CakeName.Text != "" && CakePrice.Text != "" && photo != "" && photo != null && ComboBoxCakeType.SelectedItem != null)
             {
                 var db = new cakeShopEntities();
                 var cake = new cake();

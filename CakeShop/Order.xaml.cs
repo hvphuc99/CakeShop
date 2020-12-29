@@ -44,7 +44,7 @@ namespace CakeShop
 
             foreach (cake cake in cakes)
             {
-                CakeDto cakeDto = new CakeDto(cake.id, cake.name, cake.photo, cake.description, cake.price?.ToString("c", culture), cake.quantity, cake.type_id);
+                CakeDto cakeDto = new CakeDto(cake.id, cake.name, cake.photo, cake.description, cake.price.ToString("c", culture), cake.quantity, cake.type_id);
                 Dtos.Add(cakeDto);
             }
             return Dtos;

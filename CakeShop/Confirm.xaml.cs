@@ -46,7 +46,7 @@ namespace CakeShop
         {
             //add order
             DateTime? dateTime = FutureDatePicker.SelectedDate;
-            int? price = subtotal(cakeDtos);
+            int price = subtotal(cakeDtos);
             order order = new order() { custumer = tbxNameCus.Text, phone = tbxPhone.Text, address=tbxAddress.Text,payDate=dateTime,totalPrice=price};
             using (var db = new cakeShopEntities())
             {
@@ -65,9 +65,9 @@ namespace CakeShop
                 }
             }
         }
-        private int? subtotal(List<CakeDto> purchase)
+        private int subtotal(List<CakeDto> purchase)
         {
-            int? subtotal = 0;
+            int subtotal = 0;
             if (purchase.Count != 0)
             {
                 foreach (CakeDto cakeDto in purchase)

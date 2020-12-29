@@ -108,7 +108,7 @@
                             Margin="-2 0 0 0">
                             <materialDesign:PackIcon Kind="Coin" />
                             <TextBlock Margin="5, 0, 0, 0">
-                                Price (VNĐ)
+                                Price ($)
                             </TextBlock>
                         </StackPanel>
                     </materialDesign:HintAssist.Hint>
@@ -148,7 +148,6 @@
                     Click="AddCakeButton_Click"
                     Content="Add"
                     Background="#FF5DB1AA"
-                    Foreground="White"
                     BorderBrush="Transparent"
                     BorderThickness="0"
                     Width="100"
@@ -161,7 +160,6 @@
                     Content="Cancel"
                     Click="CancelAddCakeButton_Click"
                     Background="#ea97ad"
-                    Foreground="White"
                     BorderBrush="Transparent"
                     BorderThickness="0"
                     Width="100"

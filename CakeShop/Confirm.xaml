@@ -139,7 +139,7 @@
                                 Width="100"
                                 Click="BtnCloseConfirm_Click"
                                 ToolTip="Resource name: MaterialDesignRaisedLightButton"
-                                Foreground="#FFC54747">
+                                Background="#ea97ad">
                             Cancel
                         </Button>
                         <Button Name="btnConfirmOk" Grid.Column="2" Style="{StaticResource MaterialDesignRaisedLightButton}"

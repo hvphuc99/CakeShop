@@ -41,7 +41,7 @@ namespace CakeShop
             {
                 cakeType.Text = db.cakeTypes.SqlQuery("select * from cakeTypes where id = @id",new SqlParameter("@id",cakeDetail.type_id)).FirstOrDefault().name;
             }           
-            cakePrice.Text = cakeDetail.price?.ToString("c", culture);
+            cakePrice.Text = cakeDetail.price.ToString("c", culture);
             cakeDescription.Text = cakeDetail.description;
 
         }

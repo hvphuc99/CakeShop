@@ -25,6 +25,7 @@ namespace CakeShop
             Gridsidebar.Children.Add(sidebar);
             sidebar.AddCakeScreen += showAddCakeScreen;
             sidebar.AddOrderScreen += showAddOrderScreen;
+            sidebar.StaticticalScreen += showStatisticalScreen;
             loadCakes(0,1);
             loadCakeTypes();
         }
@@ -41,6 +42,13 @@ namespace CakeShop
             Order order = new Order();
             this.Hide();
             order.ShowDialog();
+            this.Show();
+        }
+        public void showStatisticalScreen()
+        {
+            var statisticalScreen = new Statistical();
+            this.Hide();
+            statisticalScreen.ShowDialog();
             this.Show();
         }
 
@@ -129,7 +137,7 @@ namespace CakeShop
             {
                 var folder = AppDomain.CurrentDomain.BaseDirectory;
                 cake.photo = $"{folder}/Assets/{cake.photo}";
-                CakeDto cakeDto = new CakeDto(cake.id,cake.name,cake.photo,cake.description, cake.price?.ToString("c", culture),cake.type_id);
+                CakeDto cakeDto = new CakeDto(cake.id,cake.name,cake.photo,cake.description, cake.price.ToString("c", culture),cake.type_id);
                 cakeDtos.Add(cakeDto);
             }
             return cakeDtos;

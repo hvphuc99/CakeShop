@@ -25,6 +25,8 @@ namespace CakeShop.UserController
         public event AddCakeScreenDelegate AddCakeScreen;
         public delegate void AddOrderScreenDelegate();
         public event AddCakeScreenDelegate AddOrderScreen;
+        public delegate void StaticticalScreenDelegate();
+        public event StaticticalScreenDelegate StaticticalScreen;
         public SideBar()
         {
             InitializeComponent();
@@ -37,6 +39,11 @@ namespace CakeShop.UserController
         private void BtnOrderScreen_Click(object sender, RoutedEventArgs e)
         {
             AddOrderScreen();
+        }
+
+        private void StaticticalButton_Click(object sender, RoutedEventArgs e)
+        {
+            StaticticalScreen();
         }
     }
    

@@ -237,6 +237,7 @@
                     <Button Name="btnCloseOrder" Grid.Column="1" Style="{StaticResource MaterialDesignRaisedLightButton}"
                             Width="100"
                             Click="BtnCloseOrder_Click"
+                            Background="#ea97ad"
                             ToolTip="Resource name: MaterialDesignRaisedLightButton">
                         Back
                     </Button>
