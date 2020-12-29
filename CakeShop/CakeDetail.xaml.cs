@@ -48,5 +48,13 @@ namespace CakeShop
         {
             this.Close();
         }
+
+        private void UpdateCakeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var updateCake = new UpdateCake();
+            this.Hide();
+            updateCake.ShowDialog();
+            this.Show();
+        }
     }
 }

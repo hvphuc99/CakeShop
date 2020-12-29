@@ -18,11 +18,18 @@ namespace CakeShop.UserController
     /// <summary>
     /// Interaction logic for SideBar.xaml
     /// </summary>
+    /// 
     public partial class SideBar : UserControl
     {
+        public delegate void AddCakeScreenDelegate();
+        public event AddCakeScreenDelegate AddCakeScreen;
         public SideBar()
         {
             InitializeComponent();
+        }
+        private void btnAddCake_Click(object sender, RoutedEventArgs e)
+        {
+            AddCakeScreen();
         }
     }
    

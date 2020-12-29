@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using CakeShop.UserController;
 
 namespace CakeShop
 {
@@ -14,12 +15,28 @@ namespace CakeShop
     /// </summary>
     public partial class MainWindow : Window
     {
+        private SideBar sidebar;
         public MainWindow()
         {
             InitializeComponent();
+
+            sidebar = new SideBar();
+            Gridsidebar.Children.Add(sidebar);
+            sidebar.AddCakeScreen += showAddCakeScreen;
+
             loadCakes(0,1);
             loadCakeTypes();
         }
+
+        public void showAddCakeScreen()
+        {
+            var addCakeScreen = new AddCake();
+            this.Hide();
+            addCakeScreen.ShowDialog();
+            this.Show();
+        }
+
+
         void loadCakes(int index,int option)
         {
             using (var db = new cakeShopEntities())
