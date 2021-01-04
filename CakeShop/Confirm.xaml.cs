@@ -40,6 +40,7 @@ namespace CakeShop
             List<CakeDto> cakeDtos = button.Tag as List<CakeDto>;
             addOrderDB(cakeDtos);
             cakeDtos.Clear();
+            MessageBox.Show("Add cake successful !", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Close();
         }
         private void addOrderDB(List<CakeDto> cakeDtos)

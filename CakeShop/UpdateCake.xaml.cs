@@ -127,6 +127,7 @@ namespace CakeShop
 
                 db.SaveChanges();
                 MessageBox.Show("Update cake successful !", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
             }
             else
             {

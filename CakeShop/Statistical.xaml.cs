@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace CakeShop
@@ -17,9 +18,15 @@ namespace CakeShop
         public Statistical()
         {
             InitializeComponent();
+            drawColumnChart();
+            drawPieChart(0);
+        }
 
+        public void drawColumnChart()
+        {
             //Draw total price in months
             var db = new cakeShopEntities();
+
             var totalPricesMonthsDB = db.orders
                 .GroupBy(record => new { Month = record.payDate.Value.Month })
                 .Select(record => new { record.Key, total = record.Sum(item => item.totalPrice) })
@@ -53,60 +60,35 @@ namespace CakeShop
 
             MonthChartData.Series = SeriesCollection;
             MonthChartLabel.Labels = Labels;
+        }
 
-
+        public void drawPieChart(int month)
+        {
             //Draw pie
+            var db = new cakeShopEntities();
             var listCakeTypes = db.cakeTypes.ToArray();
-            //var dataPieChart = db.orderDetails
-            //   .Join(
-            //        db.orders,
-            //        entryPoint1 => entryPoint1.order_id,
-            //        entry => entry.id,
-            //        (entryPoint1, entry) => new { entryPoint1, entry }
-            //    )
-            //   .Join(
-            //        db.cakes,
-            //        entryPoint2 => entryPoint2.entryPoint1.cake_id,
-            //        entry => entry.id,
-            //        (entryPoint2, entry) => new { entryPoint2, entry }
-            //    )
-            //   .Join(
-            //        db.cakeTypes,
-            //        entryPoint3 => entryPoint3.entry.type_id,
-            //        entry => entry.id,
-            //        (entryPoint3, entry) => new { entryPoint3, entry }
-            //    )
-            //   .GroupBy(record => new { Month = record.entryPoint3.entryPoint2.entry.payDate.Value.Month })
-            //   .ToArray();
 
-            //Todo: get list data
-            //{
-            //    month
-            //    cake type
-            //    total Price
-            //}
+            var months = new List<List<Revenue>>();
+            months = revenues();
 
             PointLabel = chartPoint =>
                 string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
-            PieSeries a = new PieSeries
+            if (PieChart != null)
             {
-                Title = "test 1",
-                Values = new ChartValues<double> { 1 },
-                DataLabels = true,
-                LabelPoint = PointLabel,
-            };
-            PieSeries b = new PieSeries
-            {
-                Title = "test 2",
-                Values = new ChartValues<double> { 1 },
-                DataLabels = true,
-                LabelPoint = PointLabel,
-            };
-            PieChart.Series.RemoveAt(0);
-            PieChart.Series.Add(a);
-            PieChart.Series.Add(b);
+                PieChart.Series.Clear();
 
-            revenues();
+                for (int i = 0; i < listCakeTypes.Length; i++)
+                {
+                    PieSeries pie = new PieSeries
+                    {
+                        Title = months[month][i].TypeName,
+                        Values = new ChartValues<int> { months[month][i].TotalPrice ?? default(int) },
+                        DataLabels = true,
+                        LabelPoint = PointLabel,
+                    };
+                    PieChart.Series.Add(pie);
+                }
+            }
         }
 
         private void GridBarraTitulo_MouseDown(object sender, MouseButtonEventArgs e)
@@ -135,12 +117,12 @@ namespace CakeShop
         {
             this.Close();
         }
-        private List<Revenue> revenues()
+        private List<List<Revenue>> revenues()
         {
             
             using (var db = new cakeShopEntities())
             {
-                var listRevenue = (from ol in db.orderDetails
+                var listRevenueDB = (from ol in db.orderDetails
                                    join or in db.orders
                                     on ol.order_id equals or.id
                                    join c in db.cakes
@@ -155,13 +137,60 @@ namespace CakeShop
                                        month = g.Key.Month,
                                        totalPrice = g.Sum(x => x.totalPrice),
                                    }
-                                    ).ToList();
+                                    ).ToArray();
 
-                if (listRevenue != null)
-                    return null;
-                           
+                var listRevenue = new List<Revenue>();
+                for (int i = 0; i < listRevenueDB.Length; i++)
+                {
+                    Revenue revenue = new Revenue(listRevenueDB[i].typeId, listRevenueDB[i].typeName, listRevenueDB[i].month, listRevenueDB[i].totalPrice);
+                    listRevenue.Add(revenue);
+                }
+
+                var listTypes = db.cakeTypes.ToArray();
+                var months = new List<List<Revenue>>();
+                for (int i = 1; i <= 12; i++)
+                {
+                    var arr = new List<Revenue>();
+                    for (int j = 0; j < listRevenue.Count; j++)
+                    {
+                        if (listRevenue[j].Month == i)
+                        {
+                            arr.Add(listRevenue[j]);
+                        }
+                    }
+
+                    for (int j = 0; j < listTypes.Length; j++)
+                    {
+                        var isExist = false;
+                        foreach(Revenue revenue in arr)
+                        {
+                            if (listTypes[j].id == revenue.TypeId)
+                            {
+                                isExist = true;
+                            }
+                        }
+
+                        if (!isExist)
+                        {
+                            Revenue revenue = new Revenue(listTypes[j].id, listTypes[j].name, i, 0);
+                            arr.Add(revenue);
+                        }
+                    }
+
+                    months.Add(arr);
+                }
+    
+                if (months != null)
+                    return months;
             }
             return null;
+        }
+
+        private void cbxMonth_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            string selectedMonthString = ((ComboBoxItem)cbxMonth.SelectedItem).Tag.ToString();
+            int selectedMonth = Int32.Parse(selectedMonthString);
+            drawPieChart(selectedMonth);
         }
     }
 }

@@ -30,7 +30,7 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Row="0" Grid.Column="0">
                 <TextBlock 
-                    Text="Thong ke theo thang"
+                    Text="Statistics By Month"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     FontSize="20"
@@ -39,47 +39,47 @@
             </Grid>
             <Grid Grid.Row="0" Grid.Column="1">
                 <TextBlock 
-                    Text="Thong ke theo loai"
+                    Text="Statistics By Cake Type"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     FontSize="20"
                     FontWeight="Bold"
                     />
-                <ComboBox Width="100" HorizontalAlignment="Right" Margin="0, 0, 20, 0">
-                    <ComboBoxItem IsSelected="True">
+                <ComboBox SelectionChanged="cbxMonth_SelectionChanged" x:Name="cbxMonth" Width="100" HorizontalAlignment="Right" Margin="0, 0, 20, 0">
+                    <ComboBoxItem Tag="0"  IsSelected="True">
                         January
                     </ComboBoxItem>
-                    <ComboBoxItem>
+                    <ComboBoxItem Tag="1">
                         February
                     </ComboBoxItem>
-                    <ComboBoxItem>
+                    <ComboBoxItem Tag="2">
                         March
                     </ComboBoxItem>
-                    <ComboBoxItem>
+                    <ComboBoxItem Tag="3">
                         April
                     </ComboBoxItem>
-                    <ComboBoxItem>
+                    <ComboBoxItem Tag="4">
                         May
                     </ComboBoxItem>
-                    <ComboBoxItem>
+                    <ComboBoxItem Tag="5">
                         June
                     </ComboBoxItem>
-                    <ComboBoxItem>
+                    <ComboBoxItem Tag="6">
                         July
                     </ComboBoxItem>
-                    <ComboBoxItem>
+                    <ComboBoxItem Tag="7">
                         August
                     </ComboBoxItem>
-                    <ComboBoxItem>
+                    <ComboBoxItem Tag="8">
                         September
                     </ComboBoxItem>
-                    <ComboBoxItem>
+                    <ComboBoxItem Tag="9">
                         October
                     </ComboBoxItem>
-                    <ComboBoxItem>
+                    <ComboBoxItem Tag="10">
                         November
                     </ComboBoxItem>
-                    <ComboBoxItem>
+                    <ComboBoxItem Tag="11">
                         December
                     </ComboBoxItem>
                 </ComboBox>

@@ -72,20 +72,6 @@
                 </Grid>
             </Button>
 
-            <Button Margin="10"
-                    Background="#FF5DB1AA"
-                    BorderBrush="#FF5DB1AA"
-                    x:Name="StaticticalButton"
-                    Click="StaticticalButton_Click"
-                    Height="50">
-                <Grid Width="150">
-                    <materialDesign:PackIcon Kind="ChartBar"
-                                             VerticalAlignment="Center" />
-                    <TextBlock HorizontalAlignment="Center"
-                               Text="Statistical"
-                               FontFamily="Champagne &amp; Limousines" />
-                </Grid>
-            </Button>
 
             <Button Margin="10"
                     Name="btnOrderScreen"
@@ -102,6 +88,20 @@
                 </Grid>
             </Button>
 
+            <Button Margin="10"
+                    Background="#FF5DB1AA"
+                    BorderBrush="#FF5DB1AA"
+                    x:Name="StaticticalButton"
+                    Click="StaticticalButton_Click"
+                    Height="50">
+                <Grid Width="150">
+                    <materialDesign:PackIcon Kind="ChartBar"
+                                             VerticalAlignment="Center" />
+                    <TextBlock HorizontalAlignment="Center"
+                               Text="Statistical"
+                               FontFamily="Champagne &amp; Limousines" />
+                </Grid>
+            </Button>
             
         </StackPanel>
     </Grid>
