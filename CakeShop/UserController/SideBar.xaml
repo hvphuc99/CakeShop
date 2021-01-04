@@ -31,7 +31,7 @@
         <Ellipse Height="150"
                  Width="150">
             <Ellipse.Fill>
-                <ImageBrush ImageSource="pack://application:,,,/CakeShop;component/Assets/0.jpg" />
+                <ImageBrush ImageSource="pack://application:,,,/CakeShop;component/Assets/unnamed.jpg" />
             </Ellipse.Fill>
         </Ellipse>
 

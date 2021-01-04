@@ -11,7 +11,7 @@
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     Margin="10,0">
-            <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+            <!--<Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
                     Width="25"
                     Height="25"
                     Background="{x:Null}"
@@ -26,7 +26,7 @@
                     BorderBrush="{x:Null}"
                     Foreground="#FF5DB1AA">
                 <materialDesign:PackIcon Kind="Account" />
-            </Button>
+            </Button>-->
             <Button x:Name="ButtonFechar"
                     Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
                     Width="25"

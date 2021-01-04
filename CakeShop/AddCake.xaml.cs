@@ -86,9 +86,12 @@ namespace CakeShop
 
                 cake.photo = newImageName;
 
+                cake.quantity = 20;
+
                 db.cakes.Add(cake);
                 db.SaveChanges();
                 MessageBox.Show("Add cake successful !", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
             }
             else
             {

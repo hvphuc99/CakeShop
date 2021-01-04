@@ -59,6 +59,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -102,6 +103,9 @@
       <DependentUpon>Confirm.xaml</DependentUpon>
     </Compile>
     <Compile Include="DTO\Revenue.cs" />
+    <Compile Include="SplashWindow.xaml.cs">
+      <DependentUpon>SplashWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Statistical.xaml.cs">
       <DependentUpon>Statistical.xaml</DependentUpon>
     </Compile>
@@ -159,6 +163,10 @@
     <Page Include="Confirm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SplashWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Statistical.xaml">
       <SubType>Designer</SubType>
@@ -265,6 +273,7 @@
     <Resource Include="Assets\flan.jpg" />
     <Resource Include="Assets\rasberry.jpg" />
     <Resource Include="Assets\wallWood.jpg" />
+    <Resource Include="Assets\unnamed.jpg" />
     <Content Include="CakeShopDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CakeShopDB.edmx</DependentUpon>
