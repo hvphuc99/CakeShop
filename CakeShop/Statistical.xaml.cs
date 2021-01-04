@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using CakeShop.DTO;
 using LiveCharts;
 using LiveCharts.Wpf;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
+using System.Windows.Input;
 
 namespace CakeShop
 {
@@ -112,6 +105,8 @@ namespace CakeShop
             PieChart.Series.RemoveAt(0);
             PieChart.Series.Add(a);
             PieChart.Series.Add(b);
+
+            revenues();
         }
 
         private void GridBarraTitulo_MouseDown(object sender, MouseButtonEventArgs e)
@@ -139,6 +134,34 @@ namespace CakeShop
         private void BackHomeButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+        private List<Revenue> revenues()
+        {
+            
+            using (var db = new cakeShopEntities())
+            {
+                var listRevenue = (from ol in db.orderDetails
+                                   join or in db.orders
+                                    on ol.order_id equals or.id
+                                   join c in db.cakes
+                                    on ol.cake_id equals c.id
+                                   join ct in db.cakeTypes
+                                    on c.type_id equals ct.id
+                                   group new { ct.id, ct.name, ol.totalPrice } by new { or.payDate.Value.Month, ct.id, ct.name } into g
+                                   select new
+                                   {
+                                       typeId = g.Key.id,
+                                       typeName = g.Key.name,
+                                       month = g.Key.Month,
+                                       totalPrice = g.Sum(x => x.totalPrice),
+                                   }
+                                    ).ToList();
+
+                if (listRevenue != null)
+                    return null;
+                           
+            }
+            return null;
         }
     }
 }

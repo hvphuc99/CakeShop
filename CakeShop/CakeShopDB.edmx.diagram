@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="cakeShopModel.cake" Width="1.5" PointX="3.5" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="cakeShopModel.cakeType" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="cakeShopModel.orderDetail" Width="1.5" PointX="5.875" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="cakeShopModel.order" Width="1.5" PointX="4.125" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cakeShopModel.order" Width="1.5" PointX="3.375" PointY="4.625" IsExpanded="true" />
         <AssociationConnector Association="cakeShopModel.FK_cake" ManuallyRouted="false" />
         <AssociationConnector Association="cakeShopModel.FK_cake_typeCake" ManuallyRouted="false" />
         <AssociationConnector Association="cakeShopModel.FK_order" ManuallyRouted="false" />

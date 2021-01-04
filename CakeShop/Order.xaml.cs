@@ -223,6 +223,14 @@ namespace CakeShop
             dgvCart.ItemsSource = null;
             tbxSubtotal.Text = "";
         }
+
+        private void BtnBought_Click(object sender, RoutedEventArgs e)
+        {
+            Bought bought = new Bought();
+            this.Hide();
+            bought.ShowDialog();
+            this.ShowDialog();
+        }
         //private void DgvCakes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         //{
         //    DataGrid gd = (DataGrid)sender;

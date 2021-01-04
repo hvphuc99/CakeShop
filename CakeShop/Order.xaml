@@ -231,6 +231,8 @@
                     </Grid.ColumnDefinitions>
                     <Button Style="{StaticResource MaterialDesignRaisedLightButton}"
                             Width="100"
+                            Name="btnBought"
+                            Click="BtnBought_Click"
                             ToolTip="Resource name: MaterialDesignRaisedLightButton">
                         History
                     </Button>

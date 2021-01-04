@@ -95,9 +95,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Bought.xaml.cs">
+      <DependentUpon>Bought.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Confirm.xaml.cs">
       <DependentUpon>Confirm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DTO\Revenue.cs" />
     <Compile Include="Statistical.xaml.cs">
       <DependentUpon>Statistical.xaml</DependentUpon>
     </Compile>
@@ -148,6 +152,10 @@
     <Compile Include="UserController\SideBar.xaml.cs">
       <DependentUpon>SideBar.xaml</DependentUpon>
     </Compile>
+    <Page Include="Bought.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Confirm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

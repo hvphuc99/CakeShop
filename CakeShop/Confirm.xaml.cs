@@ -56,8 +56,8 @@ namespace CakeShop
             //add order details
             foreach(CakeDto cakeDto in cakeDtos)
             {
-                int? Price = findCakeById(cakeDto.Id).price * cakeDto.Quantity;
-                orderDetail orderDetail = new orderDetail() {amount = cakeDto.Quantity,totalPrice = price,cake_id=cakeDto.Id,order_id = order.id };
+                int? PriceDetail = findCakeById(cakeDto.Id).price * cakeDto.Quantity;
+                orderDetail orderDetail = new orderDetail() {amount = cakeDto.Quantity,totalPrice = PriceDetail, cake_id=cakeDto.Id,order_id = order.id };
                 using (var db = new cakeShopEntities())
                 {
                     db.orderDetails.Add(orderDetail);
