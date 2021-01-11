@@ -58,6 +58,7 @@ namespace CakeShop
             foreach(CakeDto cakeDto in cakeDtos)
             {
                 int? PriceDetail = findCakeById(cakeDto.Id).price * cakeDto.Quantity;
+                updateQuantityCake(cakeDto.Id, cakeDto.Quantity);
                 orderDetail orderDetail = new orderDetail() {amount = cakeDto.Quantity,totalPrice = PriceDetail, cake_id=cakeDto.Id,order_id = order.id };
                 using (var db = new cakeShopEntities())
                 {
@@ -86,6 +87,15 @@ namespace CakeShop
                 cake = db.cakes.Where(c => c.id == id).FirstOrDefault();
             }
             return cake;
+        }
+        private void updateQuantityCake(int id, int quantity)
+        {
+            using (var db = new cakeShopEntities())
+            {
+                cake cake = db.cakes.Find(id);
+                cake.quantity = cake.quantity - quantity;
+                db.SaveChanges();
+            }
         }
     }
 }
